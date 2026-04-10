@@ -12,10 +12,10 @@ public class PaymentRepositoryImpl {
 
     @PersistenceContext
     private EntityManager entityManager;
-
-    // Custom SQL update
+    
     public void updatePaymentStatus(String transactionId, String status) {
-        entityManager.createNativeQuery("UPDATE payment SET status = ? WHERE transaction_id = ?")
+        entityManager.createNativeQuery(
+                "UPDATE payment SET status = ? WHERE transaction_id = ?")
                 .setParameter(1, status)
                 .setParameter(2, transactionId)
                 .executeUpdate();
